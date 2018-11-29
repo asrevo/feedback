@@ -4,8 +4,8 @@ import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface Processor {
-    String feedBack_queue = "feedBack_queue";
+    String feedback_queue = "feedback_queue";
 
-    @Input("feedBack_queue")
-    SubscribableChannel feedBack_queue();
+    @Input("feedback_queue")
+    SubscribableChannel feedback_queue();
 }
