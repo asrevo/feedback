@@ -15,7 +15,7 @@ public class Receiver {
     @Autowired
     private StaterService staterService;
 
-    @StreamListener(value = Processor.ToFeedBack_pop)
+    @StreamListener(value = Processor.feedBack_queue)
     public void receive(Message<Stater> stater) {
         staterService.state(stater.getPayload());
     }
