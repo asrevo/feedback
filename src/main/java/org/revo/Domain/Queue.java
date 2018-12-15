@@ -4,7 +4,6 @@ import lombok.Getter;
 
 @Getter
 public enum Queue {
-    BENTO4("Bento4", 1),
     FFMPEG("FFMPEG", 2),
     FILE("FILE", 3),
     TUBE_PUBLISH("TUBE_PUBLISH", 4),
