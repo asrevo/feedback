@@ -26,6 +26,7 @@ public class SecurityConfig extends ResourceServerConfigurerAdapter {
         http
                 .anonymous()
                 .and().authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/search").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/media/info").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/media/view/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/user/info").permitAll()

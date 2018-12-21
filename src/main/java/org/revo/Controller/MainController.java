@@ -2,14 +2,12 @@ package org.revo.Controller;
 
 import org.revo.Domain.*;
 import org.revo.Service.Cached.MediaInformationCachedService;
-import org.revo.Service.UserMediaCommentService;
-import org.revo.Service.UserMediaLikeService;
-import org.revo.Service.UserMediaViewService;
-import org.revo.Service.UserUserFollowService;
+import org.revo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +31,13 @@ public class MainController {
     private UserMediaViewService userMediaViewService;
     @Autowired
     private MediaInformationCachedService mediaInformationCachedService;
+    @Autowired
+    private MasterService masterService;
+
+    @PostMapping("search")
+    private SearchResult search(@RequestBody Search search) throws IOException {
+        return SearchResult.builder().master(masterService.search(search)).search(search).build();
+    }
 
     @GetMapping("/trending")
     public ResponseEntity<List<MediaInformation>> trending() {
