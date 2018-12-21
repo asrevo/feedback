@@ -2,7 +2,10 @@ package org.revo.Controller;
 
 import org.revo.Domain.*;
 import org.revo.Service.Cached.MediaInformationCachedService;
-import org.revo.Service.*;
+import org.revo.Service.UserMediaCommentService;
+import org.revo.Service.UserMediaLikeService;
+import org.revo.Service.UserMediaViewService;
+import org.revo.Service.UserUserFollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +33,6 @@ public class MainController {
     private UserMediaViewService userMediaViewService;
     @Autowired
     private MediaInformationCachedService mediaInformationCachedService;
-    @Autowired
-    private StaterService staterService;
 
     @GetMapping("/trending")
     public ResponseEntity<List<MediaInformation>> trending() {
@@ -144,10 +145,5 @@ public class MainController {
     public ResponseEntity uncomment(@PathVariable("id") String id) {
         userMediaCommentService.uncomment(id);
         return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/states")
-    public List<Stater> states() {
-        return staterService.states();
     }
 }
