@@ -11,6 +11,11 @@ server:
 spring:
   application:
     name: feedback
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://auth-responsible-oribi.cfapps.io/auth/.well-known/jwks.json
   cloud:
     config:
       uri: http://${vcap.services.CONFIG_CREDENTIALS.credentials.username}:${vcap.services.CONFIG_CREDENTIALS.credentials.password}@${org.revo.env.config.externalurl:${org.revo.env.config.internalurl}}
